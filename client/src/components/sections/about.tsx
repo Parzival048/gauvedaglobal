@@ -26,10 +26,30 @@ const values = [
 ];
 
 const imageCards = [
-  { icon: Wheat, label: "Organic Farms", color: "from-primary/30 to-primary/10" },
-  { icon: CircleDot, label: "Healthy Cattle", color: "from-accent/30 to-accent/10" },
-  { icon: Sprout, label: "Natural Growth", color: "from-accent/20 to-secondary/30" },
-  { icon: Earth, label: "Eco-Friendly", color: "from-primary/20 to-primary/5" },
+  {
+    icon: Wheat,
+    label: "Organic Farms",
+    image: "/images/WhatsApp Image 2025-10-08 at 7.26.42 PM.webp",
+    color: "from-primary/30 to-primary/10"
+  },
+  {
+    icon: CircleDot,
+    label: "Healthy Cattle",
+    image: "/images/WhatsApp Image 2025-10-08 at 7.26.42 PM (1).webp",
+    color: "from-accent/30 to-accent/10"
+  },
+  {
+    icon: Sprout,
+    label: "Natural Growth",
+    image: "/images/cow-dung-manure.webp",
+    color: "from-accent/20 to-secondary/30"
+  },
+  {
+    icon: Earth,
+    label: "Eco-Friendly",
+    image: "/images/organic-fertilizer.webp",
+    color: "from-primary/20 to-primary/5"
+  },
 ];
 
 export function About() {
@@ -44,15 +64,23 @@ export function About() {
                   <motion.div
                     key={card.label}
                     whileHover={{ scale: 1.02 }}
-                    className={`aspect-square rounded-2xl bg-gradient-to-br ${card.color} flex items-center justify-center shadow-lg ${
+                    className={`aspect-square rounded-2xl overflow-hidden shadow-lg relative ${
                       index === 1 ? "translate-y-8" : index === 2 ? "-translate-y-4" : index === 3 ? "translate-y-4" : ""
                     }`}
                     data-testid={`card-about-${card.label.toLowerCase().replace(/\s+/g, "-")}`}
                   >
-                    <div className="text-center p-4">
-                      <card.icon className="w-12 h-12 mx-auto mb-2 text-primary" />
-                      <div className="text-sm font-medium text-foreground" data-testid={`text-about-card-${index}`}>
-                        {card.label}
+                    <img
+                      src={card.image}
+                      alt={card.label}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex items-end justify-center p-4">
+                      <div className="text-center">
+                        <card.icon className="w-8 h-8 mx-auto mb-1 text-white" />
+                        <div className="text-sm font-medium text-white" data-testid={`text-about-card-${index}`}>
+                          {card.label}
+                        </div>
                       </div>
                     </div>
                   </motion.div>

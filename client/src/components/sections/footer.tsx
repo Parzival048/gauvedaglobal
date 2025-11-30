@@ -4,25 +4,26 @@ import { SiFacebook, SiInstagram, SiX, SiLinkedin } from "react-icons/si";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollReveal } from "@/components/animations/motion";
+import { Link } from "wouter";
 
 const footerLinks = {
   company: [
     { label: "About Us", href: "#about" },
     { label: "Our Story", href: "#about" },
-    { label: "Careers", href: "#" },
-    { label: "Press", href: "#" },
+    { label: "Contact", href: "#contact" },
+    { label: "Products", href: "#products" },
   ],
   products: [
-    { label: "Powdered Manure", href: "#" },
-    { label: "Pelletized Manure", href: "#" },
+    { label: "Cow Dung Manure", href: "#products" },
+    { label: "Cow Dung Logs", href: "#products" },
+    { label: "Organic Fertilizer", href: "#products" },
     { label: "Bulk Orders", href: "#contact" },
-    { label: "Organic Fertilizers", href: "#" },
   ],
-  resources: [
-    { label: "Farming Guide", href: "#" },
-    { label: "Blog", href: "#" },
-    { label: "FAQ", href: "#" },
-    { label: "Support", href: "#contact" },
+  legal: [
+    { label: "Privacy Policy", href: "/privacy-policy" },
+    { label: "Terms & Conditions", href: "/terms-and-conditions" },
+    { label: "Shipping Policy", href: "/shipping-policy" },
+    { label: "Returns & Refunds", href: "/shipping-policy" },
   ],
 };
 
@@ -159,23 +160,17 @@ export function Footer() {
             </div>
 
             <div>
-              <h4 className="font-semibold text-foreground mb-4" data-testid="text-footer-resources-heading">Resources</h4>
+              <h4 className="font-semibold text-foreground mb-4" data-testid="text-footer-legal-heading">Legal</h4>
               <ul className="space-y-3">
-                {footerLinks.resources.map((link, index) => (
+                {footerLinks.legal.map((link, index) => (
                   <li key={link.label}>
-                    <a
+                    <Link
                       href={link.href}
-                      onClick={(e) => {
-                        if (link.href.startsWith("#")) {
-                          e.preventDefault();
-                          scrollToSection(link.href);
-                        }
-                      }}
                       className="text-muted-foreground hover:text-foreground transition-colors"
-                      data-testid={`link-footer-resources-${index}`}
+                      data-testid={`link-footer-legal-${index}`}
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -191,20 +186,27 @@ export function Footer() {
             </div>
 
             <div className="flex items-center gap-6 text-sm text-muted-foreground">
-              <a
-                href="#"
+              <Link
+                href="/privacy-policy"
                 className="hover:text-foreground transition-colors"
                 data-testid="link-privacy"
               >
                 Privacy Policy
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href="/terms-and-conditions"
                 className="hover:text-foreground transition-colors"
                 data-testid="link-terms"
               >
-                Terms of Service
-              </a>
+                Terms & Conditions
+              </Link>
+              <Link
+                href="/shipping-policy"
+                className="hover:text-foreground transition-colors"
+                data-testid="link-shipping"
+              >
+                Shipping Policy
+              </Link>
               <Button
                 variant="ghost"
                 size="icon"

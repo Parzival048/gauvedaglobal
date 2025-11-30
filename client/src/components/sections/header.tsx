@@ -57,9 +57,11 @@ export function Header() {
             whileHover={{ scale: 1.02 }}
             data-testid="link-logo"
           >
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-              <Leaf className="w-5 h-5 text-primary-foreground" />
-            </div>
+            <img
+              src="/images/logo.webp"
+              alt="Gauvedaglobal Logo"
+              className="w-14 h-14 sm:w-16 sm:h-16 object-contain"
+            />
             <span className="font-serif text-xl font-semibold text-foreground" data-testid="text-logo">
               Gauveda<span className="text-primary">global</span>
             </span>

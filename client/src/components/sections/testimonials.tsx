@@ -41,6 +41,42 @@ const testimonials = [
     quote:
       "As a small-scale farmer, affordability matters. Gauvedaglobal offers the best value for premium organic manure. My coffee plantation thrives with their products.",
   },
+  {
+    name: "Vijay Singh",
+    location: "Rajasthan, India",
+    farmSize: "75 acres",
+    initials: "VS",
+    rating: 5,
+    quote:
+      "Excellent product for organic farming! My mustard crop quality has significantly improved. The customer service team is very responsive and helpful for bulk orders.",
+  },
+  {
+    name: "Meena Reddy",
+    location: "Telangana, India",
+    farmSize: "30 acres",
+    initials: "MR",
+    rating: 5,
+    quote:
+      "I've tried many organic fertilizers, but Gauvedaglobal's cow dung manure is unmatched. My rice paddies are healthier, and the grain quality has earned premium prices at the market.",
+  },
+  {
+    name: "Suresh Nair",
+    location: "Kerala, India",
+    farmSize: "10 acres",
+    initials: "SN",
+    rating: 5,
+    quote:
+      "Perfect for my spice garden! The manure is well-composted and free from any chemicals. My cardamom and pepper plants are flourishing like never before.",
+  },
+  {
+    name: "Anita Desai",
+    location: "Madhya Pradesh, India",
+    farmSize: "60 acres",
+    initials: "AD",
+    rating: 5,
+    quote:
+      "Outstanding quality and timely delivery even during peak season. Their organic manure has helped us achieve full organic certification for our soybean farm. Highly recommended!",
+  },
 ];
 
 const certifications = [

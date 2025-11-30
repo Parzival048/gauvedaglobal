@@ -1,3 +1,6 @@
+import { useState, useEffect, useCallback } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Users, Award, Leaf } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -9,7 +12,18 @@ const stats = [
   { icon: Award, value: "15+", label: "Years Experience" },
 ];
 
+const heroImages = [
+  "/images/cow-dung-manure.webp",
+  "/images/organic-fertilizer.webp",
+  "/images/cow-dung-logs.webp",
+];
+
 export function Hero() {
+  const [emblaRef] = useEmblaCarousel(
+    { loop: true },
+    [Autoplay({ delay: 4000, stopOnInteraction: false })]
+  );
+
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -105,36 +119,50 @@ export function Hero() {
           <div className="order-1 lg:order-2">
             <ScrollReveal direction="right" delay={0.2}>
               <div className="relative" data-testid="hero-visual-container">
-                <div className="aspect-square lg:aspect-[4/5] rounded-3xl overflow-hidden bg-gradient-to-br from-primary/20 via-primary/10 to-accent/20 flex items-center justify-center">
-                  <div className="relative w-full h-full p-8 flex items-center justify-center">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-3/4 h-3/4 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 blur-2xl" />
-                    </div>
-                    <div className="relative text-center">
-                      <motion.div
-                        animate={{
-                          y: [0, -10, 0],
-                        }}
-                        transition={{
-                          duration: 4,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                        }}
-                        className="w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 mx-auto rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-2xl"
-                        data-testid="hero-floating-badge"
-                      >
-                        <div className="text-center text-primary-foreground p-6">
-                          <Leaf className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mx-auto mb-2" />
-                          <div className="text-lg sm:text-xl font-serif font-bold" data-testid="text-hero-badge-title">
-                            100% Natural
-                          </div>
-                          <div className="text-sm opacity-80" data-testid="text-hero-badge-subtitle">
-                            Pure Organic
-                          </div>
+                <div className="aspect-square lg:aspect-[4/5] rounded-3xl overflow-hidden bg-gradient-to-br from-primary/5 via-background to-accent/5 shadow-2xl">
+                  <div className="overflow-hidden h-full" ref={emblaRef}>
+                    <div className="flex h-full">
+                      {heroImages.map((image, index) => (
+                        <div key={index} className="flex-[0_0_100%] min-w-0 h-full">
+                          <img
+                            src={image}
+                            alt={`Premium Organic Product ${index + 1}`}
+                            className="w-full h-full object-cover"
+                          />
                         </div>
-                      </motion.div>
+                      ))}
                     </div>
                   </div>
+                  {/* Overlay Badge */}
+                  <motion.div
+                    animate={{
+                      y: [0, -10, 0],
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="absolute bottom-8 left-1/2 -translate-x-1/2 w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-2xl border-4 border-background"
+                    data-testid="hero-floating-badge"
+                  >
+                    <div className="text-center text-primary-foreground p-4">
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-2 rounded-full bg-white/90 flex items-center justify-center overflow-hidden">
+                        <img
+                          src="/images/logo.webp"
+                          alt="Gauvedaglobal"
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="text-sm sm:text-base font-serif font-bold" data-testid="text-hero-badge-title">
+                        100% Natural
+                      </div>
+                      <div className="text-xs opacity-80" data-testid="text-hero-badge-subtitle">
+                        Pure Organic
+                      </div>
+                    </div>
+                  </motion.div>
                 </div>
 
                 <motion.div
