@@ -1,6 +1,6 @@
 [build]
-  # Build command for the application
-  command = "npm run build"
+  # Build command for the application (client only for Netlify)
+  command = "npm install && npm run build:netlify"
 
   # Directory with the built static files
   publish = "dist/public"
@@ -67,10 +67,10 @@
 
 # Development context
 [context.deploy-preview]
-  command = "npm run build"
+  command = "npm run build:netlify"
 
 [context.branch-deploy]
-  command = "npm run build"
+  command = "npm run build:netlify"
 
 # Plugin configuration
 [[plugins]]
